@@ -10,6 +10,7 @@ export default async function page({ params }: { params: { slug: string } }) {
     return notFound();
   }
   const layout = data[0].layout;
+  console.log("layout", layout);
   return (
     <div>
       {slug}
