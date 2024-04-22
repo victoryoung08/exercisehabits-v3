@@ -11,7 +11,7 @@ export const RenderBlocks = ({ layout }) => {
           return null;
         }
         console.log("block", block);
-        return <Block {...block} />;
+        return <Block {...block} key={i} />;
       })}
     </div>
   );

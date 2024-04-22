@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ReactElement } from "react";
+import { MoveUpRight } from "lucide-react";
 export type FeatureGridProps = {
   badgeText?: string;
   heading?: string | undefined;
@@ -42,16 +43,15 @@ export const FeatureCards = ({
                     featureGrid.map(
                       ({ heading, description, icon }: gridItem) => (
                         <div
-                          className="flex flex-row gap-6 w-full items-start"
+                          className="flex flex-col gap-6 w-full items-start px-6 py-6 border-[1.2px] rounded-3xl"
                           key={heading}
                         >
-                          {icon && (
-                            <div className="w-4 h-4 mt-2 text-primary">
-                              {icon}
-                            </div>
-                          )}
+                          <div className="w-4 h-4 mt-2 text-primary">
+                            <MoveUpRight />
+                          </div>
+
                           <div className="flex flex-col gap-1">
-                            <p>{heading}</p>
+                            <p className="font-medium">{heading}</p>
                             <p className="text-muted-foreground text-sm">
                               {description}
                             </p>
