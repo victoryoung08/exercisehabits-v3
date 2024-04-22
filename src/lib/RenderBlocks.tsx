@@ -1,11 +1,21 @@
 import { blockList } from "@/components/blocks/blockList";
 
-export const RenderBlocks = ({ layout }) => {
+export type layoutProps = {
+  layout: blockProps[];
+};
+
+export type blockProps = {
+  blockType: string;
+};
+
+type BlockComponent = React.ComponentType<blockProps>;
+
+export const RenderBlocks = ({ layout }: layoutProps) => {
   console.log("layout", layout);
   return (
     <div>
       {layout.map((block, i) => {
-        const Block = blockList[block.blockType];
+        const Block = blockList[block.blockType] as BlockComponent;
         if (!Block) {
           console.log("block not found");
           return null;
