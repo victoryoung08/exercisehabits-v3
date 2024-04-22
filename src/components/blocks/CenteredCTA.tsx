@@ -1,7 +1,7 @@
 import { MoveRight, PhoneCall } from "lucide-react";
 import { Button } from "../ui/button";
 import { ReactElement } from "react";
-import cn from "classnames";
+import cn from "clsx";
 
 type CenterCTAProps = {
   badgeText?: string;
