@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "exercise-habits-backend-production.up.railway.app",
       },
+      {
+        protocol: "https",
+        hostname: "exercisehabits-v3.vercel.app",
+      },
     ],
   },
 };
