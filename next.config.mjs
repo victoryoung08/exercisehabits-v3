@@ -8,9 +8,8 @@ const nextConfig = {
         port: "4000",
       },
       {
-        protocol: "http",
+        protocol: "https",
         hostname: "exercise-habits-backend-production.up.railway.app",
-        port: "4000",
       },
     ],
   },
