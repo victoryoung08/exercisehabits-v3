@@ -16,7 +16,7 @@ export type ImageWithTextProps = {
 };
 
 export type ImageProps = {
-  src: string;
+  url: string;
   alt: string;
   width?: number;
   height?: number;
@@ -39,7 +39,9 @@ export const ImageWithText = ({
           <div className="grid grid-cols-1 gap-8 items-center lg:grid-cols-2">
             <div className="flex gap-4 flex-col">
               <div>
-                <Badge variant="outline">{badgeText}</Badge>
+                <Badge variant="outline" className="">
+                  {badgeText}
+                </Badge>
               </div>
               <div className="flex gap-4 flex-col">
                 <h1 className="text-5xl md:text-7xl max-w-lg tracking-tighter text-left font-regular">
@@ -50,17 +52,27 @@ export const ImageWithText = ({
                 </p>
               </div>
               <div className="flex flex-row gap-4">
-                <Button size="lg" className="gap-4" variant="outline">
-                  {buttonText} <div className="w-4 h-4">{buttonIcon}</div>
-                </Button>
-                <Button size="lg" className="gap-4">
-                  {secondaryButtonText}{" "}
-                  <div className="w-4 h-4">{secondaryButtonIcon}</div>
-                </Button>
+                {buttonText && (
+                  <Button size="lg" className="gap-4" variant="outline">
+                    {buttonText} <div className="w-4 h-4">{buttonIcon}</div>
+                  </Button>
+                )}
+                {secondaryButtonText && (
+                  <Button size="lg" className="gap-4">
+                    {secondaryButtonText}{" "}
+                    <div className="w-4 h-4">{secondaryButtonIcon}</div>
+                  </Button>
+                )}
               </div>
             </div>
             <div className="bg-muted rounded-md aspect-square relative">
-              {image && <Image src={image.src} alt={image.alt} fill />}
+              {image && (
+                <Image
+                  src={process.env.NEXT_PUBLIC_PAYLOAD_BASEURL + image.url}
+                  alt={image.alt}
+                  fill
+                />
+              )}
             </div>
           </div>
         </div>

@@ -11,7 +11,6 @@ export type blockProps = {
 type BlockComponent = React.ComponentType<blockProps>;
 
 export const RenderBlocks = ({ layout }: layoutProps) => {
-  console.log("layout", layout);
   return (
     <div>
       {layout.map((block, i) => {
@@ -20,7 +19,7 @@ export const RenderBlocks = ({ layout }: layoutProps) => {
           console.log("block not found");
           return null;
         }
-        console.log("block", block);
+
         return <Block {...block} key={i} />;
       })}
     </div>

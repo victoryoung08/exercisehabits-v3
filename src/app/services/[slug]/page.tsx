@@ -1,7 +1,8 @@
 import { getData } from "@/app/api/payload";
 import { notFound } from "next/navigation";
 import { RenderBlocks } from "@/lib/RenderBlocks";
-
+import { FormBlock } from "@/components/blocks/FormBlock";
+import { sendMailerliteContact } from "@/app/actions/actions";
 export default async function page({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const res = await getData("services", slug);
@@ -12,9 +13,10 @@ export default async function page({ params }: { params: { slug: string } }) {
   const layout = data[0].layout;
   console.log("layout", layout);
   return (
-    <div>
-      {slug}
+    <main>
       <RenderBlocks layout={layout} />
-    </div>
+      <FormBlock customID="mainForm" />
+      <footer className="h-[300px] w-full" />
+    </main>
   );
 }

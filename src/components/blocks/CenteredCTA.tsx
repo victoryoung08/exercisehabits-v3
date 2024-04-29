@@ -1,6 +1,7 @@
 import { MoveRight, PhoneCall } from "lucide-react";
 import { Button } from "../ui/button";
 import { ReactElement } from "react";
+import { SeaAndSun } from "iconoir-react";
 import cn from "clsx";
 
 type CenterCTAProps = {
@@ -27,60 +28,64 @@ export const CenteredCTA = ({
   return (
     <>
       {heading && (
-        <div className="w-full">
-          <div className="container mx-auto">
-            <div
-              className={cn(
-                "flex gap-8 py-20 lg:py-40 flex-col items-center justify-center"
-              )}
-            >
-              {badgeText && (
-                <div>
-                  <Button variant="secondary" size="sm" className="gap-4">
-                    {badgeText} <MoveRight className="w-4 h-4" />
-                  </Button>
-                </div>
-              )}
-              {(heading || description) && (
+        <section className="bg-muted">
+          <div className="section-padding">
+            <div className="w-full">
+              <SeaAndSun
+                width="64px"
+                height="64px"
+                color="HSL(40 33% 96%)"
+                className="mx-auto"
+              />
+              <div className="mx-auto max-w-3xl">
                 <div
                   className={cn(
-                    "flex gap-4 flex-col",
-                    alignment === "left" &&
-                      "items-start justify-start text-left",
-                    alignment === "center" &&
-                      "items-center justify-center text-center",
-                    alignment === "right" && "items-end justify-end"
+                    "flex gap-8 section-padding flex-col items-center justify-center"
                   )}
                 >
-                  {heading && (
-                    <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter font-regular">
-                      {heading}
-                    </h1>
+                  {badgeText && (
+                    <div>
+                      <Button variant="secondary" size="sm" className="gap-4">
+                        {badgeText} <MoveRight className="w-4 h-4" />
+                      </Button>
+                    </div>
                   )}
-                  {description && (
-                    <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl">
-                      {description}
-                    </p>
+                  {(heading || description) && (
+                    <div
+                      className={cn(
+                        "flex gap-4 flex-col",
+                        alignment === "left" &&
+                          "items-start justify-start text-left",
+                        alignment === "center" &&
+                          "items-center justify-center text-center",
+                        alignment === "right" && "items-end justify-end"
+                      )}
+                    >
+                      {heading && <h2 className="text-balance">{heading}</h2>}
+                      {description && <p className="">{description}</p>}
+                    </div>
+                  )}
+                  {(buttonText || secondaryButtonText) && (
+                    <div className="flex flex-row gap-3 items-center">
+                      {buttonText && (
+                        <Button size="lg" className="gap-4" variant="outline">
+                          {buttonText}{" "}
+                          <div className="w-4 h-4">{buttonIcon}</div>
+                        </Button>
+                      )}
+                      {secondaryButtonText && (
+                        <Button size="lg" className="gap-4">
+                          {secondaryButtonText}{" "}
+                          <MoveRight className="w-4 h-4" />
+                        </Button>
+                      )}
+                    </div>
                   )}
                 </div>
-              )}
-              {(buttonText || secondaryButtonText) && (
-                <div className="flex flex-row gap-3 items-center">
-                  {buttonText && (
-                    <Button size="lg" className="gap-4" variant="outline">
-                      {buttonText} <div className="w-4 h-4">{buttonIcon}</div>
-                    </Button>
-                  )}
-                  {secondaryButtonText && (
-                    <Button size="lg" className="gap-4">
-                      {secondaryButtonText} <MoveRight className="w-4 h-4" />
-                    </Button>
-                  )}
-                </div>
-              )}
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       )}
     </>
   );
