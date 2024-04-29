@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { RenderBlocks } from "@/lib/RenderBlocks";
 import { FormBlock } from "@/components/blocks/FormBlock";
 import { sendMailerliteContact } from "@/app/actions/actions";
+console.log(process.env.NEXT_PUBLIC_PAYLOAD_BASEURL);
 export default async function page({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const res = await getData("services", slug);
